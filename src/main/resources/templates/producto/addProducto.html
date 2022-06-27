@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+    <head th:replace="layout/layout :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container-fluid" layout:fragment="page-content">            
+            <nav class="navbar navbar-light bg-light m-2">
+                <h4 class="ps-3"><i class="fa-solid fa-user-tie me-2"></i>Productos</h4>
+            </nav>
+            <div class="container mt-3">
+                <h3 th:text="${titulo}"></h3>
+                <hr>
+                <form th:action="@{/producto/save}" method="post" enctype="multipart/form-data" th:object="${producto}">                    
+                    <div class="mb-3">
+                        <input type="hidden" th:field="*{id}"
+                        <label for="recipient-name" class="col-form-label">Nombre:</label>
+                        <input type="text" th:field="*{nombre}" class="form-control" name="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Precio:</label>
+                        <input type="text" th:field="*{precio}" class="form-control" name="precio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Cantidad:</label>
+                        <input type="text" class="form-control" th:field="*{cantidad}" id="cantidad">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('cantidad')}"
+                               th:errors="*{cantidad}"></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Imagen:</label>
+                        <input type="file" class="form-control" id="imagen" name="imagen">
+                    </div>
+                    <a th:href="@{/producto}" class="btn btn-secondary" >Cancel</a>
+                    <input type="submit" class="btn btn-primary"/>
+                </form>
+            </div>
+        </div> 
+    
+        <!--OTRO SCRIPTS PARA PAGINAS-->
+    <th:block layout:fragment="page-scripts">
+
+    </th:block>
+</body>
+</html>

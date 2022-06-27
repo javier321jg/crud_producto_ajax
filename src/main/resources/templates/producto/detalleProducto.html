@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+    <head th:replace="layout/layout :: head">
+        <title>Detalle</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container-fluid" layout:fragment="page-content">            
+            <nav class="navbar navbar-light bg-light m-2">
+                <h4 class="ps-3"><i class="fa-solid fa-user-tie me-2"></i>Producto</h4>
+            </nav>
+            <div class="container mt-3">
+                <h3 th:text="${titulo}"></h3>
+                <hr>
+                <div class="card" style="width: 18rem;">
+                    <img th:src="@{'/imagenes/'+${producto.imagen}}" class="card-img-top" alt="..." >
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${producto.nombre}+' '+${producto.precio}">Card title</h5>
+                       
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" th:text="${producto.imagen}">An item</li>
+                    </ul>
+                    <div class="card-body">
+                        <a th:href="@{/producto}" class="btn btn-warning" th:text="Regresar"></a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <!--OTRO SCRIPTS PARA PAGINAS-->
+        
+    <th:block layout:fragment="page-scripts">
+
+    </th:block>
+</body>
+</html>
